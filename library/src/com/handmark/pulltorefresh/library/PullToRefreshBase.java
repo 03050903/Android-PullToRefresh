@@ -338,7 +338,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 							break;
 					}
 					absDiff = Math.abs(diff);
-					Log.v("ddd", "absDiff:" + absDiff + " mTouchSlop:" + mTouchSlop + " oppositeDiff:" + oppositeDiff);
 					if (absDiff > mTouchSlop && (!mFilterTouchEvents || absDiff > Math.abs(oppositeDiff))) {
 						if (mMode.showHeaderLoadingLayout() && diff >= 1f && isReadyForPullStart()) {
 							mLastMotionY = y;
@@ -369,7 +368,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 				break;
 			}
 		}
-		Log.v("ddd", "mIsBeingDragged:" + mIsBeingDragged);
 		return mIsBeingDragged;
 	}
 
