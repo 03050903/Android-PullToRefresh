@@ -22,6 +22,7 @@ import android.graphics.Canvas;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -74,8 +75,6 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 			return;
 		}
 
-		super.onRefreshing(false);
-
 		final LoadingLayout origLoadingView, listViewLoadingView, oppositeListViewLoadingView;
 		final int selection, scrollToY;
 
@@ -97,6 +96,13 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 				scrollToY = getScrollY() + getHeaderSize();
 				break;
 		}
+		Log.d(LOG_TAG, "oppositeListViewLoadingView:" + oppositeListViewLoadingView.getVisibility() + " " + getCurrentMode());
+
+		// Show the ListView Loading View and set it to refresh.
+		listViewLoadingView.setVisibility(View.VISIBLE);
+		listViewLoadingView.refreshing();
+
+		super.onRefreshing(false);
 
 		// Hide our original Loading View
 		origLoadingView.reset();
@@ -105,9 +111,6 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 		// Make sure the opposite end is hidden too
 		oppositeListViewLoadingView.setVisibility(View.GONE);
 
-		// Show the ListView Loading View and set it to refresh.
-		listViewLoadingView.setVisibility(View.VISIBLE);
-		listViewLoadingView.refreshing();
 
 		if (doScroll) {
 			// We need to disable the automatic visibility changes for now
@@ -262,13 +265,13 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 
 		@Override
 		protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX,
-				int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
+									   int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
 
 			final boolean returnValue = super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX,
 					scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);
 
 			// Does all of the hard work...
-			OverscrollHelper.overScrollBy(PullToRefreshListView.this, deltaX, scrollX, deltaY, scrollY, isTouchEvent);
+			// OverscrollHelper.overScrollBy(PullToRefreshListView.this, deltaX, scrollX, deltaY, scrollY, isTouchEvent);
 
 			return returnValue;
 		}
@@ -291,7 +294,7 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 			 */
 			try {
 				super.dispatchDraw(canvas);
-			} catch (IndexOutOfBoundsException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -332,6 +335,23 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 			super.setEmptyView(emptyView);
 		}
 
+	}
+
+	public boolean isShowLoadMoreView() {
+		return mFooterLoadingView.getVisibility() == View.VISIBLE;
+	}
+
+	public void showLoadMoreView() {
+		if(mFooterLoadingView.getVisibility() != View.VISIBLE) {
+			mFooterLoadingView.setVisibility(View.VISIBLE);
+			mFooterLoadingView.refreshing();
+		}
+	}
+
+	public void hideLoadMoreView() {
+		if(mFooterLoadingView.getVisibility() == View.VISIBLE) {
+			mFooterLoadingView.setVisibility(View.GONE);
+		}
 	}
 
 }

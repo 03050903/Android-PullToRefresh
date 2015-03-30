@@ -49,6 +49,12 @@ public class PullToRefreshGridView extends PullToRefreshAdapterViewBase<GridView
 	}
 
 	@Override
+	public void onLoadMore() {
+		super.onLoadMore();
+		smoothScrollTo(getFooterSize());
+	}
+
+	@Override
 	protected final GridView createRefreshableView(Context context, AttributeSet attrs) {
 		final GridView gv;
 		if (VERSION.SDK_INT >= VERSION_CODES.GINGERBREAD) {
@@ -88,7 +94,7 @@ public class PullToRefreshGridView extends PullToRefreshAdapterViewBase<GridView
 
 		@Override
 		protected boolean overScrollBy(int deltaX, int deltaY, int scrollX, int scrollY, int scrollRangeX,
-				int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
+									   int scrollRangeY, int maxOverScrollX, int maxOverScrollY, boolean isTouchEvent) {
 
 			final boolean returnValue = super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX,
 					scrollRangeY, maxOverScrollX, maxOverScrollY, isTouchEvent);

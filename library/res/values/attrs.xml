@@ -75,6 +75,9 @@
         <attr name="ptrAdapterViewBackground" format="reference|color" />
         <attr name="ptrDrawableTop" format="reference" />
         <attr name="ptrDrawableBottom" format="reference" />
+
+        <!--Auto load if true-->
+        <attr name="ptrAutoLoadMore" format="boolean" />
     </declare-styleable>
 
 </resources>
