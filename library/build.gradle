@@ -29,3 +29,15 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
+
+
+apply plugin: 'maven'
+uploadArchives {
+
+    repositories.mavenDeployer {
+        repository(url: "file://localhost/D://LocalRepository")
+        pom.groupId = 'com.netease.android'
+        pom.artifactId = 'pulltorefresh'
+        pom.version = '1.0.0'
+    }
+}
