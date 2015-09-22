@@ -1,4 +1,4 @@
-![jitpack.io](https://img.shields.io/github/release/chenupt/Android-PullToRefresh.svg?label=JitPack)
+![jitpack](https://img.shields.io/github/release/chenupt/Android-PullToRefresh.svg?label=JitPack)
 # PLEASE NOTE, THIS PROJECT IS NO LONGER BEING MAINTAINED
 
 * * *
