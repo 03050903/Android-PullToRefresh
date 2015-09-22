@@ -36,8 +36,8 @@ uploadArchives {
 
     repositories.mavenDeployer {
         repository(url: "file://localhost/D://LocalRepository")
-        pom.groupId = 'com.netease.android'
+        pom.groupId = 'com.handmark.pulltorefresh'
         pom.artifactId = 'pulltorefresh'
-        pom.version = '1.0.0'
+        pom.version = '1.0.1'
     }
 }
