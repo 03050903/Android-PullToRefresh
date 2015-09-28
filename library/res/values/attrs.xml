@@ -7,13 +7,16 @@
         <attr name="ptrRefreshableViewBackground" format="reference|color" />
 
         <!-- A drawable to use as the background of the Header and Footer Loading Views -->
-        <attr name="ptrHeaderBackground" format="reference|color" />
+        <attr name="ptrHeaderBackgroundStart" format="reference|color" />
+        <attr name="ptrHeaderBackgroundEnd" format="reference|color" />
 
         <!-- Text Color of the Header and Footer Loading Views -->
-        <attr name="ptrHeaderTextColor" format="reference|color" />
+        <attr name="ptrHeaderTextColorStart" format="reference|color" />
+        <attr name="ptrHeaderTextColorEnd" format="reference|color" />
 
         <!-- Text Color of the Header and Footer Loading Views Sub Header -->
-        <attr name="ptrHeaderSubTextColor" format="reference|color" />
+        <attr name="ptrHeaderSubTextColorStart" format="reference|color" />
+        <attr name="ptrHeaderSubTextColorEnd" format="reference|color" />
 
         <!-- Mode of Pull-to-Refresh that should be used -->
         <attr name="ptrMode">

@@ -108,13 +108,6 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 				break;
 		}
 
-		if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderBackground)) {
-			Drawable background = attrs.getDrawable(R.styleable.PullToRefresh_ptrHeaderBackground);
-			if (null != background) {
-				ViewCompat.setBackground(this, background);
-			}
-		}
-
 		if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderTextAppearance)) {
 			TypedValue styleID = new TypedValue();
 			attrs.getValue(R.styleable.PullToRefresh_ptrHeaderTextAppearance, styleID);
@@ -126,19 +119,7 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 			setSubTextAppearance(styleID.data);
 		}
 
-		// Text Color attrs need to be set after TextAppearance attrs
-		if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderTextColor)) {
-			ColorStateList colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderTextColor);
-			if (null != colors) {
-				setTextColor(colors);
-			}
-		}
-		if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderSubTextColor)) {
-			ColorStateList colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderSubTextColor);
-			if (null != colors) {
-				setSubTextColor(colors);
-			}
-		}
+
 
 		// Try and get defined drawable from Attrs
 		Drawable imageDrawable = null;
@@ -157,6 +138,25 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 					Utils.warnDeprecation("ptrDrawableTop", "ptrDrawableStart");
 					imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawableTop);
 				}
+				if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderBackgroundStart)) {
+					Drawable background = attrs.getDrawable(R.styleable.PullToRefresh_ptrHeaderBackgroundStart);
+					if (null != background) {
+						ViewCompat.setBackground(this, background);
+					}
+				}
+				// Text Color attrs need to be set after TextAppearance attrs
+				if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderTextColorStart)) {
+					ColorStateList colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderTextColorStart);
+					if (null != colors) {
+						setTextColor(colors);
+					}
+				}
+				if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderSubTextColorStart)) {
+					ColorStateList colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderSubTextColorStart);
+					if (null != colors) {
+						setSubTextColor(colors);
+					}
+				}
 				break;
 
 			case PULL_FROM_END:
@@ -165,6 +165,25 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
 				} else if (attrs.hasValue(R.styleable.PullToRefresh_ptrDrawableBottom)) {
 					Utils.warnDeprecation("ptrDrawableBottom", "ptrDrawableEnd");
 					imageDrawable = attrs.getDrawable(R.styleable.PullToRefresh_ptrDrawableBottom);
+				}
+				if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderBackgroundEnd)) {
+					Drawable background = attrs.getDrawable(R.styleable.PullToRefresh_ptrHeaderBackgroundEnd);
+					if (null != background) {
+						ViewCompat.setBackground(this, background);
+					}
+				}
+				// Text Color attrs need to be set after TextAppearance attrs
+				if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderTextColorEnd)) {
+					ColorStateList colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderTextColorStart);
+					if (null != colors) {
+						setTextColor(colors);
+					}
+				}
+				if (attrs.hasValue(R.styleable.PullToRefresh_ptrHeaderSubTextColorEnd)) {
+					ColorStateList colors = attrs.getColorStateList(R.styleable.PullToRefresh_ptrHeaderSubTextColorEnd);
+					if (null != colors) {
+						setSubTextColor(colors);
+					}
 				}
 				break;
 		}

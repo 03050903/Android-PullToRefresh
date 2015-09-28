@@ -11,7 +11,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         ptr:ptrAnimationStyle="flip"
-        ptr:ptrHeaderBackground="@android:color/darker_gray"
+        ptr:ptrHeaderBackgroundStart="@android:color/darker_gray"
         ptr:ptrMode="both" />
 
 </FrameLayout>
